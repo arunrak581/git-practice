@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo "All varaiables passed to the script:$@"
+echo "All variables passed to the script:$@"
