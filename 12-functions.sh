@@ -2,7 +2,7 @@
 
 USERID=$(id -u)
 
-CHECK_ROOT() {
+CHECK_ROOT(){
  
      if [ $USERID -ne 0 ]
      then
@@ -11,7 +11,7 @@ CHECK_ROOT() {
      fi
 }
 
-VALIDATE() {
+VALIDATE(){
     if [ $1 -ne 0 ]
     then
         echo "$2 is... FAILED"
