@@ -12,6 +12,7 @@ VALIDATE() {
          echo"$2 is.... SUCCESS"
     fi         
 }
+
 if [ $USERID -ne 0 ]
 then
     echo "Please run this scripts with root priveleges"
