@@ -10,6 +10,7 @@ USERID=$(id -u)
 R="\e[31m"
 G="\e[32m"
 N="\e[0m"
+Y="\e[33m"
 
 CHECK_ROOT(){
  
@@ -32,3 +33,17 @@ VALIDATE(){
 
 CHECK_ROOT
 
+# sh 15-loops.sh git mysql postfix nginx
+for package in $@ # $@ refers to all arguments passed to it
+do
+    
+    dnf list inastalled $package &>>$LOG_FILE
+    if [ $? -ne 0 ]
+    then
+        echo "$package is not installed,going to install it" &>>$LOG_FILE
+        dnf install $package -y &>>$LOG_FILE
+        VALIDATE $?"InstallingG $package" &>>$LOG_FILE
+    else
+        echo -e "$package is already $Y installed,noting to do $N" &>>$LOG_FILE
+    fi    
+done
