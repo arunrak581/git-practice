@@ -27,17 +27,16 @@ VALIDATE(){
 
 CHECK_ROOT
 
-dnf list inastalled package
 # sh 15-loops.sh git mysql postfix nginx
 for package in $@ # $@ refers to all arguments passed to it
 do
     
-    dnf list inastalled package
+    dnf list inastalled $package
     if [ $? -ne 0 ]
     then
         echo "$package is not installed,going to install it"
         dnf install $package -y
-        VALIDATE $?"Installing G$package"   
+        VALIDATE $?"InstallingG $package"   
     else
         echo "$package is already installed,noting to do"
     fi    
