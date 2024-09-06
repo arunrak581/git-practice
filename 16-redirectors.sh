@@ -31,7 +31,17 @@ VALIDATE(){
     fi         
 }
 
+USAGE=(){
+    echo -e " $R USAGE:: $N sudo 16-redirectors.sh package1 package2"
+    exit 1
+}
+
 CHECK_ROOT
+
+if [ $# -ne 0 ]
+then
+    USAGE
+fi
 
 # sh 15-loops.sh git mysql postfix nginx
 for package in $@ # $@ refers to all arguments passed to it
