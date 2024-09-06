@@ -36,8 +36,6 @@ USAGE=(){
     exit 1
 }
 
-echO "Script started excuting at: $(date)" | tee -a $LOG_FILE
-
 CHECK_ROOT
 
 if [ $# -eq 0 ]
