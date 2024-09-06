@@ -40,12 +40,11 @@ echO "Script started excuting at: $(date)" | tee -a $LOG_FILE
 
 CHECK_ROOT
 
-if [ $# -ne 0 ]
+if [ $# -eq 0 ]
 then
     USAGE
 fi
 
-# sh 15-loops.sh git mysql postfix nginx
 for package in $@ # $@ refers to all arguments passed to it
 do
     
@@ -54,7 +53,7 @@ do
     then
         echo "$package is not installed,going to install it" &>>$LOG_FILE
         dnf install $package -y &>>$LOG_FILE
-        VALIDATE $?"InstallingG $package" &>>$LOG_FILE
+        VALIDATE $?"InstallingG $package"
     else
         echo -e "$package is already $Y installed,noting to do $N" &>>$LOG_FILE
     fi    
